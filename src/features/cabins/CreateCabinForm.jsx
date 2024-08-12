@@ -8,7 +8,7 @@ import FormRow from "../../ui/FormRow";
 import useCreateCabin from "./useCreateCabin";
 import useEditCabin from "./useEditCabin";
 
-function CreateCabinForm({ cabinToEdit = {}, onClose }) {
+function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditSession = Boolean(editId);
   const { register, handleSubmit, reset, getValues, formState } = useForm({
@@ -25,7 +25,7 @@ function CreateCabinForm({ cabinToEdit = {}, onClose }) {
         {
           onSuccess: () => {
             reset();
-            onClose?.();
+            onCloseModal?.();
           },
         }
       );
@@ -35,7 +35,7 @@ function CreateCabinForm({ cabinToEdit = {}, onClose }) {
         {
           onSuccess: () => {
             reset();
-            onClose?.();
+            onCloseModal?.();
           },
         }
       );
@@ -43,7 +43,7 @@ function CreateCabinForm({ cabinToEdit = {}, onClose }) {
   const isPending = isCreating || isEditing;
   return (
     <Form
-      type={onClose ? "modal" : "regular"}
+      type={onCloseModal ? "modal" : "regular"}
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormRow label={"name"} error={errors?.name?.message}>
@@ -130,7 +130,7 @@ function CreateCabinForm({ cabinToEdit = {}, onClose }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button onClick={() => onClose?.()} variation="secondary" type="reset">
+        <Button onClick={() => onCloseModal?.()} variation="secondary" type="reset">
           Cancel
         </Button>
         <Button disabled={isPending}>
