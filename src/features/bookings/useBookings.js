@@ -13,9 +13,11 @@ export default function () {
   const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };
-  const { data: bookings, isLoading } = useQuery({
-    queryKey: ["bookings", filter, sortBy],
-    queryFn: () => getAllBookings({ filter, sortBy }),
+  const page = !searchParams.get("page") ? 1 : +searchParams.get("page");
+
+  const { data: { data: bookings, count } = {}, isLoading } = useQuery({
+    queryKey: ["bookings", filter, sortBy, page],
+    queryFn: () => getAllBookings({ filter, sortBy, page }),
   });
-  return { bookings, isLoading };
+  return { bookings, isLoading, count };
 }
