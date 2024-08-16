@@ -19,7 +19,7 @@ function ProtectedRoute({ children }) {
       </FullPage>
     );
 
-    if(!user?.aud) return <Navigate to={'/login'}/>
+  if (!user?.aud) return <Navigate to={"/login"} />;
   return children;
 }
 
