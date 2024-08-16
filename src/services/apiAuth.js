@@ -6,6 +6,16 @@ export async function login({ email, password }) {
   });
 
   if (error) throw new Error(error.message);
-  console.log(data);
   return data;
+}
+
+export async function getCurrentUser() {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (!user) return null;
+  if (error) throw new Error(error.message);
+  return user;
 }
