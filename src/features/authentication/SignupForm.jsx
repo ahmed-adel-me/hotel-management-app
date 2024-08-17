@@ -82,7 +82,7 @@ function SignupForm() {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button variation="secondary" type="reset" onClick={reset}>
           Cancel
         </Button>
         <Button>{!isPending ? "Create new user" : <SpinnerMini />}</Button>
