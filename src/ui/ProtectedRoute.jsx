@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import useUser from "../features/authentication/useUser";
-import supabase from "../services/supabase";
 import Spinner from "./Spinner";
 import { Navigate } from "react-router-dom";
 const FullPage = styled.div`

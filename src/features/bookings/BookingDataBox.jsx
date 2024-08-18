@@ -101,8 +101,8 @@ const Footer = styled.footer`
   text-align: right;
 `;
 
-// A purely presentational component
 function BookingDataBox({ booking }) {
+  if (!booking) return;
   const {
     created_at,
     startDate,
@@ -118,7 +118,6 @@ function BookingDataBox({ booking }) {
     guests: { fullName: guestName, email, country, countryFlag, nationalID },
     cabins: { name: cabinName },
   } = booking;
-
   return (
     <StyledBookingDataBox>
       <Header>
