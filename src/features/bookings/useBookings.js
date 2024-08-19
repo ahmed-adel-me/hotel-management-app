@@ -11,7 +11,7 @@ export default function () {
   const filter =
     !filterValue || filterValue === "all"
       ? null
-      : { field: "status", value: filterValue, method: "gte" };
+      : { field: "status", value: filterValue };
   const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };
